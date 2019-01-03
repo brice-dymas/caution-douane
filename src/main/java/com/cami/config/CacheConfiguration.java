@@ -38,6 +38,18 @@ public class CacheConfiguration {
             cm.createCache(com.cami.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(com.cami.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(com.cami.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(com.cami.domain.DemandeImportation.class.getName(), jcacheConfiguration);
+            cm.createCache(com.cami.domain.DIQteTypeVehicule.class.getName(), jcacheConfiguration);
+            cm.createCache(com.cami.domain.Marque.class.getName(), jcacheConfiguration);
+            cm.createCache(com.cami.domain.Vehicule.class.getName(), jcacheConfiguration);
+            cm.createCache(com.cami.domain.TypeVehicule.class.getName(), jcacheConfiguration);
+            cm.createCache(com.cami.domain.Caution.class.getName(), jcacheConfiguration);
+            cm.createCache(com.cami.domain.Declaration.class.getName(), jcacheConfiguration);
+            cm.createCache(com.cami.domain.RVC.class.getName(), jcacheConfiguration);
+            cm.createCache(com.cami.domain.Banque.class.getName(), jcacheConfiguration);
+            cm.createCache(com.cami.domain.PieceJointe.class.getName(), jcacheConfiguration);
+            cm.createCache(com.cami.domain.Appurement.class.getName(), jcacheConfiguration);
+            cm.createCache(com.cami.domain.Employe.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

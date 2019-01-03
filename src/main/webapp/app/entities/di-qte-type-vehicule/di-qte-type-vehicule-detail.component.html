@@ -1,0 +1,45 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="dIQteTypeVehicule">
+            <h2><span jhiTranslate="cautiondouaneApp.dIQteTypeVehicule.detail.title">DI Qte Type Vehicule</span> {{dIQteTypeVehicule.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="cautiondouaneApp.dIQteTypeVehicule.quantite">Quantite</span></dt>
+                <dd>
+                    <span>{{dIQteTypeVehicule.quantite}}</span>
+                </dd>
+                <dt><span jhiTranslate="cautiondouaneApp.dIQteTypeVehicule.demandeImportation">Demande Importation</span></dt>
+                <dd>
+                    <div *ngIf="dIQteTypeVehicule.demandeImportation">
+                        <a [routerLink]="['/demande-importation', dIQteTypeVehicule.demandeImportation?.id, 'view']">{{dIQteTypeVehicule.demandeImportation?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="cautiondouaneApp.dIQteTypeVehicule.typeVehicule">Type Vehicule</span></dt>
+                <dd>
+                    <div *ngIf="dIQteTypeVehicule.typeVehicule">
+                        <a [routerLink]="['/type-vehicule', dIQteTypeVehicule.typeVehicule?.id, 'view']">{{dIQteTypeVehicule.typeVehicule?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="cautiondouaneApp.dIQteTypeVehicule.marque">Marque</span></dt>
+                <dd>
+                    <div *ngIf="dIQteTypeVehicule.marque">
+                        <a [routerLink]="['/marque', dIQteTypeVehicule.marque?.id, 'view']">{{dIQteTypeVehicule.marque?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/di-qte-type-vehicule', dIQteTypeVehicule.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

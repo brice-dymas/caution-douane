@@ -1,0 +1,28 @@
+{
+    "cautiondouaneApp": {
+        "rVC": {
+            "home": {
+                "title": "RVCS",
+                "createLabel": "Créer un nouveau RVC",
+                "createOrEditLabel": "Créer ou éditer un RVC"
+            },
+            "created": "Un nouveau RVC a été créé avec l'identifiant {{ param }}",
+            "updated": "Le RVC avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le RVC avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le RVC {{ id }} ?"
+            },
+            "detail": {
+                "title": "RVC"
+            },
+            "numeroRVC": "Numero RVC",
+            "montantRVC": "Montant RVC",
+            "numeroNavire": "Numero Navire",
+            "nomNavire": "Nom Navire",
+            "paysProvenance": "Pays Provenance",
+            "heureDepart": "Heure Depart",
+            "heureArrivee": "Heure Arrivee",
+            "demandeImportation": "Demande Importation"
+        }
+    }
+}

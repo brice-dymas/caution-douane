@@ -1,0 +1,49 @@
+{
+    "name": "Declaration",
+    "fields": [
+        {
+            "fieldName": "numeroDeclaration",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 10
+        },
+        {
+            "fieldName": "reference",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 30
+        },
+        {
+            "fieldName": "numeroIM7",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 30
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "demandeImportation",
+            "otherEntityName": "demandeImportation",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190103140040",
+    "entityTableName": "declaration",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

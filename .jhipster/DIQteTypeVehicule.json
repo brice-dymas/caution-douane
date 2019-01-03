@@ -1,0 +1,43 @@
+{
+    "name": "DIQteTypeVehicule",
+    "fields": [
+        {
+            "fieldName": "quantite",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required",
+                "min"
+            ],
+            "fieldValidateRulesMin": 0
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "demandeImportation",
+            "otherEntityName": "demandeImportation",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "typeVehicule",
+            "otherEntityName": "typeVehicule",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "marque",
+            "otherEntityName": "marque",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190103140035",
+    "entityTableName": "di_qte_type_vehicule",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

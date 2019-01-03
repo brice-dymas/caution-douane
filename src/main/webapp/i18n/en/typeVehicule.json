@@ -1,0 +1,22 @@
+{
+    "cautiondouaneApp": {
+        "typeVehicule": {
+            "home": {
+                "title": "Type Vehicules",
+                "createLabel": "Create a new Type Vehicule",
+                "createOrEditLabel": "Create or edit a Type Vehicule"
+            },
+            "created": "A new Type Vehicule is created with identifier {{ param }}",
+            "updated": "A Type Vehicule is updated with identifier {{ param }}",
+            "deleted": "A Type Vehicule is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Type Vehicule {{ id }}?"
+            },
+            "detail": {
+                "title": "Type Vehicule"
+            },
+            "numeroType": "Numero Type",
+            "nomType": "Nom Type"
+        }
+    }
+}

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+
+    <!--
+        Added the entity DemandeImportation.
+    -->
+    <changeSet id="20190103140034-1" author="jhipster">
+        <createTable tableName="demande_importation">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="numero_dordre" type="varchar(30)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="numero_facture_proforma" type="varchar(30)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="date_reception_facture" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="date_depot_facture" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="numero_pr" type="varchar(15)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="date_reception_pr" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="numero_di" type="varchar(15)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="montant_fob" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="montant_fret" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="observation" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+        
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+</databaseChangeLog>

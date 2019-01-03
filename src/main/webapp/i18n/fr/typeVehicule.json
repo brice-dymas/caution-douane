@@ -1,0 +1,22 @@
+{
+    "cautiondouaneApp": {
+        "typeVehicule": {
+            "home": {
+                "title": "TypeVehicules",
+                "createLabel": "Créer un nouveau Type Vehicule",
+                "createOrEditLabel": "Créer ou éditer un Type Vehicule"
+            },
+            "created": "Un nouveau Type Vehicule a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Type Vehicule avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Type Vehicule avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Type Vehicule {{ id }} ?"
+            },
+            "detail": {
+                "title": "Type Vehicule"
+            },
+            "numeroType": "Numero Type",
+            "nomType": "Nom Type"
+        }
+    }
+}

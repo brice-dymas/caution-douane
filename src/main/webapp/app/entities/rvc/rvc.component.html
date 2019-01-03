@@ -1,0 +1,80 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="cautiondouaneApp.rVC.home.title">RVCS</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-rvc" [routerLink]="['/rvc/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="cautiondouaneApp.rVC.home.createLabel">
+            Create new RVC
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="rVCS">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="numeroRVC"><span jhiTranslate="cautiondouaneApp.rVC.numeroRVC">Numero RVC</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="montantRVC"><span jhiTranslate="cautiondouaneApp.rVC.montantRVC">Montant RVC</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="numeroNavire"><span jhiTranslate="cautiondouaneApp.rVC.numeroNavire">Numero Navire</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="nomNavire"><span jhiTranslate="cautiondouaneApp.rVC.nomNavire">Nom Navire</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="paysProvenance"><span jhiTranslate="cautiondouaneApp.rVC.paysProvenance">Pays Provenance</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="heureDepart"><span jhiTranslate="cautiondouaneApp.rVC.heureDepart">Heure Depart</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="heureArrivee"><span jhiTranslate="cautiondouaneApp.rVC.heureArrivee">Heure Arrivee</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="demandeImportation.id"><span jhiTranslate="cautiondouaneApp.rVC.demandeImportation">Demande Importation</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let rVC of rVCS ;trackBy: trackId">
+                <td><a [routerLink]="['/rvc', rVC.id, 'view' ]">{{rVC.id}}</a></td>
+                <td>{{rVC.numeroRVC}}</td>
+                <td>{{rVC.montantRVC}}</td>
+                <td>{{rVC.numeroNavire}}</td>
+                <td>{{rVC.nomNavire}}</td>
+                <td>{{rVC.paysProvenance}}</td>
+                <td>{{rVC.heureDepart | date:'medium'}}</td>
+                <td>{{rVC.heureArrivee | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="rVC.demandeImportation">
+                        <a [routerLink]="['../demande-importation', rVC.demandeImportation?.id, 'view' ]" >{{rVC.demandeImportation?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/rvc', rVC.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/rvc', rVC.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'rvc/'+ rVC.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="rVCS && rVCS.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

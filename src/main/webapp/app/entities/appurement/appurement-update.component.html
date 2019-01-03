@@ -1,0 +1,72 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-appurement-heading" jhiTranslate="cautiondouaneApp.appurement.home.createOrEditLabel">Create or edit a Appurement</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!appurement.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="appurement.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cautiondouaneApp.appurement.numeroAppurement" for="field_numeroAppurement">Numero Appurement</label>
+                    <input type="text" class="form-control" name="numeroAppurement" id="field_numeroAppurement"
+                        [(ngModel)]="appurement.numeroAppurement" maxlength="30"/>
+                    <div [hidden]="!(editForm.controls.numeroAppurement?.dirty && editForm.controls.numeroAppurement?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.numeroAppurement?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 30 }">
+                        This field cannot be longer than 30 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cautiondouaneApp.appurement.montantAppure" for="field_montantAppure">Montant Appure</label>
+                    <input type="number" class="form-control" name="montantAppure" id="field_montantAppure"
+                        [(ngModel)]="appurement.montantAppure" min="0" jhiMin="0"/>
+                    <div [hidden]="!(editForm.controls.montantAppure?.dirty && editForm.controls.montantAppure?.invalid)">
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.montantAppure?.errors?.min" jhiTranslate="entity.validation.min" translateValues="{ min: 0 }">
+                            This field should be at least 0.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.montantAppure?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cautiondouaneApp.appurement.nombreVehicule" for="field_nombreVehicule">Nombre Vehicule</label>
+                    <input type="number" class="form-control" name="nombreVehicule" id="field_nombreVehicule"
+                        [(ngModel)]="appurement.nombreVehicule" min="0" jhiMin="0"/>
+                    <div [hidden]="!(editForm.controls.nombreVehicule?.dirty && editForm.controls.nombreVehicule?.invalid)">
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.nombreVehicule?.errors?.min" jhiTranslate="entity.validation.min" translateValues="{ min: 0 }">
+                            This field should be at least 0.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.nombreVehicule?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cautiondouaneApp.appurement.caution" for="field_caution">Caution</label>
+                    <select class="form-control" id="field_caution" name="caution" [(ngModel)]="appurement.caution" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="cautionOption.id === appurement.caution?.id ? appurement.caution : cautionOption" *ngFor="let cautionOption of cautions; trackBy: trackCautionById">{{cautionOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+{
+    "cautiondouaneApp": {
+        "appurement": {
+            "home": {
+                "title": "Appurements",
+                "createLabel": "Créer un nouveau Appurement",
+                "createOrEditLabel": "Créer ou éditer un Appurement"
+            },
+            "created": "Un nouveau Appurement a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Appurement avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Appurement avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Appurement {{ id }} ?"
+            },
+            "detail": {
+                "title": "Appurement"
+            },
+            "numeroAppurement": "Numero Appurement",
+            "montantAppure": "Montant Appure",
+            "nombreVehicule": "Nombre Vehicule",
+            "caution": "Caution"
+        }
+    }
+}

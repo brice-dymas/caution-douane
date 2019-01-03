@@ -1,0 +1,45 @@
+{
+    "name": "Banque",
+    "fields": [
+        {
+            "fieldName": "numeroBanque",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 30
+        },
+        {
+            "fieldName": "nomBanque",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": 3,
+            "fieldValidateRulesMaxlength": 30
+        },
+        {
+            "fieldName": "numeroCompte",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": 3,
+            "fieldValidateRulesMaxlength": 50
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190103140042",
+    "entityTableName": "banque",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

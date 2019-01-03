@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity DIQteTypeVehicule.
+    -->
+    <changeSet id="20190103140035-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="demande_importation_id"
+                                 baseTableName="di_qte_type_vehicule"
+                                 constraintName="fk_diqte_type_vehicule_demande_importation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="demande_importation"/>
+
+        <addForeignKeyConstraint baseColumnNames="type_vehicule_id"
+                                 baseTableName="di_qte_type_vehicule"
+                                 constraintName="fk_diqte_type_vehicule_type_vehicule_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="type_vehicule"/>
+
+        <addForeignKeyConstraint baseColumnNames="marque_id"
+                                 baseTableName="di_qte_type_vehicule"
+                                 constraintName="fk_diqte_type_vehicule_marque_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="marque"/>
+
+    </changeSet>
+</databaseChangeLog>

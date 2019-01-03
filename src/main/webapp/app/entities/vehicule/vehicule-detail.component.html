@@ -1,0 +1,57 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="vehicule">
+            <h2><span jhiTranslate="cautiondouaneApp.vehicule.detail.title">Vehicule</span> {{vehicule.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="cautiondouaneApp.vehicule.numeroChassis">Numero Chassis</span></dt>
+                <dd>
+                    <span>{{vehicule.numeroChassis}}</span>
+                </dd>
+                <dt><span jhiTranslate="cautiondouaneApp.vehicule.marque">Marque</span></dt>
+                <dd>
+                    <div *ngIf="vehicule.marque">
+                        <a [routerLink]="['/marque', vehicule.marque?.id, 'view']">{{vehicule.marque?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="cautiondouaneApp.vehicule.caution">Caution</span></dt>
+                <dd>
+                    <div *ngIf="vehicule.caution">
+                        <a [routerLink]="['/caution', vehicule.caution?.id, 'view']">{{vehicule.caution?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="cautiondouaneApp.vehicule.rvc">Rvc</span></dt>
+                <dd>
+                    <div *ngIf="vehicule.rvc">
+                        <a [routerLink]="['/rvc', vehicule.rvc?.id, 'view']">{{vehicule.rvc?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="cautiondouaneApp.vehicule.appurement">Appurement</span></dt>
+                <dd>
+                    <div *ngIf="vehicule.appurement">
+                        <a [routerLink]="['/appurement', vehicule.appurement?.id, 'view']">{{vehicule.appurement?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="cautiondouaneApp.vehicule.typeVehicule">Type Vehicule</span></dt>
+                <dd>
+                    <div *ngIf="vehicule.typeVehicule">
+                        <a [routerLink]="['/type-vehicule', vehicule.typeVehicule?.id, 'view']">{{vehicule.typeVehicule?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/vehicule', vehicule.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

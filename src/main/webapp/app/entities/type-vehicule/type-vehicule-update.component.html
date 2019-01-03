@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-type-vehicule-heading" jhiTranslate="cautiondouaneApp.typeVehicule.home.createOrEditLabel">Create or edit a Type Vehicule</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!typeVehicule.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="typeVehicule.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cautiondouaneApp.typeVehicule.numeroType" for="field_numeroType">Numero Type</label>
+                    <input type="text" class="form-control" name="numeroType" id="field_numeroType"
+                        [(ngModel)]="typeVehicule.numeroType" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cautiondouaneApp.typeVehicule.nomType" for="field_nomType">Nom Type</label>
+                    <input type="text" class="form-control" name="nomType" id="field_nomType"
+                        [(ngModel)]="typeVehicule.nomType" required minlength="3" maxlength="30"/>
+                    <div [hidden]="!(editForm.controls.nomType?.dirty && editForm.controls.nomType?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.nomType?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.nomType?.errors?.minlength" jhiTranslate="entity.validation.minlength" translateValues="{ min: 3 }">
+                        This field is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.nomType?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 30 }">
+                        This field cannot be longer than 30 characters.
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
