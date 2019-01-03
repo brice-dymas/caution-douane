@@ -1,0 +1,25 @@
+{
+    "cautiondouaneApp": {
+        "caution": {
+            "home": {
+                "title": "Cautions",
+                "createLabel": "Create a new Caution",
+                "createOrEditLabel": "Create or edit a Caution"
+            },
+            "created": "A new Caution is created with identifier {{ param }}",
+            "updated": "A Caution is updated with identifier {{ param }}",
+            "deleted": "A Caution is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Caution {{ id }}?"
+            },
+            "detail": {
+                "title": "Caution"
+            },
+            "numeroCaution": "Numero Caution",
+            "numeroDossier": "Numero Dossier",
+            "reference": "Reference",
+            "montant": "Montant",
+            "banque": "Banque"
+        }
+    }
+}

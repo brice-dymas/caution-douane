@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity PieceJointe.
+    -->
+    <changeSet id="20190103140043-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="demande_importation_id"
+                                 baseTableName="piece_jointe"
+                                 constraintName="fk_piece_jointe_demande_importation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="demande_importation"/>
+
+        <addForeignKeyConstraint baseColumnNames="rvc_id"
+                                 baseTableName="piece_jointe"
+                                 constraintName="fk_piece_jointe_rvc_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rvc"/>
+
+        <addForeignKeyConstraint baseColumnNames="declaration_id"
+                                 baseTableName="piece_jointe"
+                                 constraintName="fk_piece_jointe_declaration_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="declaration"/>
+
+    </changeSet>
+</databaseChangeLog>

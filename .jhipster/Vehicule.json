@@ -1,0 +1,55 @@
+{
+    "name": "Vehicule",
+    "fields": [
+        {
+            "fieldName": "numeroChassis",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 30
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "marque",
+            "otherEntityName": "marque",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "caution",
+            "otherEntityName": "caution",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "rvc",
+            "otherEntityName": "rVC",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "appurement",
+            "otherEntityName": "appurement",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "typeVehicule",
+            "otherEntityName": "typeVehicule",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190103140037",
+    "entityTableName": "vehicule",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

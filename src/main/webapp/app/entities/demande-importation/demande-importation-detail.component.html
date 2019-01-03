@@ -1,0 +1,63 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="demandeImportation">
+            <h2><span jhiTranslate="cautiondouaneApp.demandeImportation.detail.title">Demande Importation</span> {{demandeImportation.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="cautiondouaneApp.demandeImportation.numeroDordre">Numero Dordre</span></dt>
+                <dd>
+                    <span>{{demandeImportation.numeroDordre}}</span>
+                </dd>
+                <dt><span jhiTranslate="cautiondouaneApp.demandeImportation.numeroFactureProforma">Numero Facture Proforma</span></dt>
+                <dd>
+                    <span>{{demandeImportation.numeroFactureProforma}}</span>
+                </dd>
+                <dt><span jhiTranslate="cautiondouaneApp.demandeImportation.dateReceptionFacture">Date Reception Facture</span></dt>
+                <dd>
+                    <span>{{demandeImportation.dateReceptionFacture}}</span>
+                </dd>
+                <dt><span jhiTranslate="cautiondouaneApp.demandeImportation.dateDepotFacture">Date Depot Facture</span></dt>
+                <dd>
+                    <span>{{demandeImportation.dateDepotFacture}}</span>
+                </dd>
+                <dt><span jhiTranslate="cautiondouaneApp.demandeImportation.numeroPR">Numero PR</span></dt>
+                <dd>
+                    <span>{{demandeImportation.numeroPR}}</span>
+                </dd>
+                <dt><span jhiTranslate="cautiondouaneApp.demandeImportation.dateReceptionPR">Date Reception PR</span></dt>
+                <dd>
+                    <span>{{demandeImportation.dateReceptionPR}}</span>
+                </dd>
+                <dt><span jhiTranslate="cautiondouaneApp.demandeImportation.numeroDI">Numero DI</span></dt>
+                <dd>
+                    <span>{{demandeImportation.numeroDI}}</span>
+                </dd>
+                <dt><span jhiTranslate="cautiondouaneApp.demandeImportation.montantFOB">Montant FOB</span></dt>
+                <dd>
+                    <span>{{demandeImportation.montantFOB}}</span>
+                </dd>
+                <dt><span jhiTranslate="cautiondouaneApp.demandeImportation.montantFRET">Montant FRET</span></dt>
+                <dd>
+                    <span>{{demandeImportation.montantFRET}}</span>
+                </dd>
+                <dt><span jhiTranslate="cautiondouaneApp.demandeImportation.observation">Observation</span></dt>
+                <dd>
+                    <span>{{demandeImportation.observation}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/demande-importation', demandeImportation.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

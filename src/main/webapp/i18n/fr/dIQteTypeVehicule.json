@@ -1,0 +1,24 @@
+{
+    "cautiondouaneApp": {
+        "dIQteTypeVehicule": {
+            "home": {
+                "title": "DIQteTypeVehicules",
+                "createLabel": "Créer un nouveau DI Qte Type Vehicule",
+                "createOrEditLabel": "Créer ou éditer un DI Qte Type Vehicule"
+            },
+            "created": "Un nouveau DI Qte Type Vehicule a été créé avec l'identifiant {{ param }}",
+            "updated": "Le DI Qte Type Vehicule avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le DI Qte Type Vehicule avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le DI Qte Type Vehicule {{ id }} ?"
+            },
+            "detail": {
+                "title": "DI Qte Type Vehicule"
+            },
+            "quantite": "Quantite",
+            "demandeImportation": "Demande Importation",
+            "typeVehicule": "Type Vehicule",
+            "marque": "Marque"
+        }
+    }
+}

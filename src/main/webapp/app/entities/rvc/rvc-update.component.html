@@ -1,0 +1,116 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-rvc-heading" jhiTranslate="cautiondouaneApp.rVC.home.createOrEditLabel">Create or edit a RVC</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!rVC.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="rVC.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cautiondouaneApp.rVC.numeroRVC" for="field_numeroRVC">Numero RVC</label>
+                    <input type="text" class="form-control" name="numeroRVC" id="field_numeroRVC"
+                        [(ngModel)]="rVC.numeroRVC" maxlength="30"/>
+                    <div [hidden]="!(editForm.controls.numeroRVC?.dirty && editForm.controls.numeroRVC?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.numeroRVC?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 30 }">
+                        This field cannot be longer than 30 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cautiondouaneApp.rVC.montantRVC" for="field_montantRVC">Montant RVC</label>
+                    <input type="number" class="form-control" name="montantRVC" id="field_montantRVC"
+                        [(ngModel)]="rVC.montantRVC" required min="0" jhiMin="0"/>
+                    <div [hidden]="!(editForm.controls.montantRVC?.dirty && editForm.controls.montantRVC?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.montantRVC?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.montantRVC?.errors?.min" jhiTranslate="entity.validation.min" translateValues="{ min: 0 }">
+                            This field should be at least 0.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.montantRVC?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cautiondouaneApp.rVC.numeroNavire" for="field_numeroNavire">Numero Navire</label>
+                    <input type="text" class="form-control" name="numeroNavire" id="field_numeroNavire"
+                        [(ngModel)]="rVC.numeroNavire" maxlength="10"/>
+                    <div [hidden]="!(editForm.controls.numeroNavire?.dirty && editForm.controls.numeroNavire?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.numeroNavire?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 10 }">
+                        This field cannot be longer than 10 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cautiondouaneApp.rVC.nomNavire" for="field_nomNavire">Nom Navire</label>
+                    <input type="text" class="form-control" name="nomNavire" id="field_nomNavire"
+                        [(ngModel)]="rVC.nomNavire" required maxlength="30"/>
+                    <div [hidden]="!(editForm.controls.nomNavire?.dirty && editForm.controls.nomNavire?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.nomNavire?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.nomNavire?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 30 }">
+                        This field cannot be longer than 30 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cautiondouaneApp.rVC.paysProvenance" for="field_paysProvenance">Pays Provenance</label>
+                    <input type="text" class="form-control" name="paysProvenance" id="field_paysProvenance"
+                        [(ngModel)]="rVC.paysProvenance" required maxlength="30"/>
+                    <div [hidden]="!(editForm.controls.paysProvenance?.dirty && editForm.controls.paysProvenance?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.paysProvenance?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.paysProvenance?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 30 }">
+                        This field cannot be longer than 30 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cautiondouaneApp.rVC.heureDepart" for="field_heureDepart">Heure Depart</label>
+                    <div class="d-flex">
+                        <input id="field_heureDepart" type="datetime-local" class="form-control" name="heureDepart" [(ngModel)]="heureDepart"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cautiondouaneApp.rVC.heureArrivee" for="field_heureArrivee">Heure Arrivee</label>
+                    <div class="d-flex">
+                        <input id="field_heureArrivee" type="datetime-local" class="form-control" name="heureArrivee" [(ngModel)]="heureArrivee"
+                        />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cautiondouaneApp.rVC.demandeImportation" for="field_demandeImportation">Demande Importation</label>
+                    <select class="form-control" id="field_demandeImportation" name="demandeImportation" [(ngModel)]="rVC.demandeImportation" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="demandeImportationOption.id === rVC.demandeImportation?.id ? rVC.demandeImportation : demandeImportationOption" *ngFor="let demandeImportationOption of demandeimportations; trackBy: trackDemandeImportationById">{{demandeImportationOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

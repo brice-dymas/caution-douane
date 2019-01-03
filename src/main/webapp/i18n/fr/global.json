@@ -8,6 +8,18 @@
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entités",
+                "demandeImportation": "Demande Importation",
+                "diQteTypeVehicule": "DI Qte Type Vehicule",
+                "marque": "Marque",
+                "vehicule": "Vehicule",
+                "typeVehicule": "Type Vehicule",
+                "caution": "Caution",
+                "declaration": "Declaration",
+                "rvc": "RVC",
+                "banque": "Banque",
+                "pieceJointe": "Piece Jointe",
+                "appurement": "Appurement",
+                "employe": "Employe",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

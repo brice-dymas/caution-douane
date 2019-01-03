@@ -1,0 +1,83 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-caution-heading" jhiTranslate="cautiondouaneApp.caution.home.createOrEditLabel">Create or edit a Caution</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!caution.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="caution.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cautiondouaneApp.caution.numeroCaution" for="field_numeroCaution">Numero Caution</label>
+                    <input type="text" class="form-control" name="numeroCaution" id="field_numeroCaution"
+                        [(ngModel)]="caution.numeroCaution" maxlength="30"/>
+                    <div [hidden]="!(editForm.controls.numeroCaution?.dirty && editForm.controls.numeroCaution?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.numeroCaution?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 30 }">
+                        This field cannot be longer than 30 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cautiondouaneApp.caution.numeroDossier" for="field_numeroDossier">Numero Dossier</label>
+                    <input type="text" class="form-control" name="numeroDossier" id="field_numeroDossier"
+                        [(ngModel)]="caution.numeroDossier" maxlength="30"/>
+                    <div [hidden]="!(editForm.controls.numeroDossier?.dirty && editForm.controls.numeroDossier?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.numeroDossier?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 30 }">
+                        This field cannot be longer than 30 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cautiondouaneApp.caution.reference" for="field_reference">Reference</label>
+                    <input type="text" class="form-control" name="reference" id="field_reference"
+                        [(ngModel)]="caution.reference" maxlength="15"/>
+                    <div [hidden]="!(editForm.controls.reference?.dirty && editForm.controls.reference?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.reference?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 15 }">
+                        This field cannot be longer than 15 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cautiondouaneApp.caution.montant" for="field_montant">Montant</label>
+                    <input type="number" class="form-control" name="montant" id="field_montant"
+                        [(ngModel)]="caution.montant" required min="0" jhiMin="0"/>
+                    <div [hidden]="!(editForm.controls.montant?.dirty && editForm.controls.montant?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.montant?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.montant?.errors?.min" jhiTranslate="entity.validation.min" translateValues="{ min: 0 }">
+                            This field should be at least 0.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.montant?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cautiondouaneApp.caution.banque" for="field_banque">Banque</label>
+                    <select class="form-control" id="field_banque" name="banque" [(ngModel)]="caution.banque" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="banqueOption.id === caution.banque?.id ? caution.banque : banqueOption" *ngFor="let banqueOption of banques; trackBy: trackBanqueById">{{banqueOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

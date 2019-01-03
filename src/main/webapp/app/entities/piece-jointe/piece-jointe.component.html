@@ -1,0 +1,87 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="cautiondouaneApp.pieceJointe.home.title">Piece Jointes</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-piece-jointe" [routerLink]="['/piece-jointe/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="cautiondouaneApp.pieceJointe.home.createLabel">
+            Create new Piece Jointe
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="pieceJointes">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="nom"><span jhiTranslate="cautiondouaneApp.pieceJointe.nom">Nom</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="fichier"><span jhiTranslate="cautiondouaneApp.pieceJointe.fichier">Fichier</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="description"><span jhiTranslate="cautiondouaneApp.pieceJointe.description">Description</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="demandeImportation.id"><span jhiTranslate="cautiondouaneApp.pieceJointe.demandeImportation">Demande Importation</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="rvc.id"><span jhiTranslate="cautiondouaneApp.pieceJointe.rvc">Rvc</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="declaration.id"><span jhiTranslate="cautiondouaneApp.pieceJointe.declaration">Declaration</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let pieceJointe of pieceJointes ;trackBy: trackId">
+                <td><a [routerLink]="['/piece-jointe', pieceJointe.id, 'view' ]">{{pieceJointe.id}}</a></td>
+                <td>{{pieceJointe.nom}}</td>
+                <td>
+                    <a *ngIf="pieceJointe.fichier" (click)="openFile(pieceJointe.fichierContentType, pieceJointe.fichier)" jhiTranslate="entity.action.open">open</a>
+                    <span *ngIf="pieceJointe.fichier">{{pieceJointe.fichierContentType}}, {{byteSize(pieceJointe.fichier)}}</span>
+                </td>
+                <td>{{pieceJointe.description}}</td>
+                <td>
+                    <div *ngIf="pieceJointe.demandeImportation">
+                        <a [routerLink]="['../demande-importation', pieceJointe.demandeImportation?.id, 'view' ]" >{{pieceJointe.demandeImportation?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="pieceJointe.rvc">
+                        <a [routerLink]="['../rvc', pieceJointe.rvc?.id, 'view' ]" >{{pieceJointe.rvc?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="pieceJointe.declaration">
+                        <a [routerLink]="['../declaration', pieceJointe.declaration?.id, 'view' ]" >{{pieceJointe.declaration?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/piece-jointe', pieceJointe.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/piece-jointe', pieceJointe.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'piece-jointe/'+ pieceJointe.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="pieceJointes && pieceJointes.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

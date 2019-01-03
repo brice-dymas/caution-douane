@@ -1,0 +1,57 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="rVC">
+            <h2><span jhiTranslate="cautiondouaneApp.rVC.detail.title">RVC</span> {{rVC.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="cautiondouaneApp.rVC.numeroRVC">Numero RVC</span></dt>
+                <dd>
+                    <span>{{rVC.numeroRVC}}</span>
+                </dd>
+                <dt><span jhiTranslate="cautiondouaneApp.rVC.montantRVC">Montant RVC</span></dt>
+                <dd>
+                    <span>{{rVC.montantRVC}}</span>
+                </dd>
+                <dt><span jhiTranslate="cautiondouaneApp.rVC.numeroNavire">Numero Navire</span></dt>
+                <dd>
+                    <span>{{rVC.numeroNavire}}</span>
+                </dd>
+                <dt><span jhiTranslate="cautiondouaneApp.rVC.nomNavire">Nom Navire</span></dt>
+                <dd>
+                    <span>{{rVC.nomNavire}}</span>
+                </dd>
+                <dt><span jhiTranslate="cautiondouaneApp.rVC.paysProvenance">Pays Provenance</span></dt>
+                <dd>
+                    <span>{{rVC.paysProvenance}}</span>
+                </dd>
+                <dt><span jhiTranslate="cautiondouaneApp.rVC.heureDepart">Heure Depart</span></dt>
+                <dd>
+                    <span>{{rVC.heureDepart}}</span>
+                </dd>
+                <dt><span jhiTranslate="cautiondouaneApp.rVC.heureArrivee">Heure Arrivee</span></dt>
+                <dd>
+                    <span>{{rVC.heureArrivee}}</span>
+                </dd>
+                <dt><span jhiTranslate="cautiondouaneApp.rVC.demandeImportation">Demande Importation</span></dt>
+                <dd>
+                    <div *ngIf="rVC.demandeImportation">
+                        <a [routerLink]="['/demande-importation', rVC.demandeImportation?.id, 'view']">{{rVC.demandeImportation?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/rvc', rVC.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

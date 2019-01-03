@@ -1,0 +1,80 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="cautiondouaneApp.demandeImportation.home.title">Demande Importations</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-demande-importation" [routerLink]="['/demande-importation/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="cautiondouaneApp.demandeImportation.home.createLabel">
+            Create new Demande Importation
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="demandeImportations">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="numeroDordre"><span jhiTranslate="cautiondouaneApp.demandeImportation.numeroDordre">Numero Dordre</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="numeroFactureProforma"><span jhiTranslate="cautiondouaneApp.demandeImportation.numeroFactureProforma">Numero Facture Proforma</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="dateReceptionFacture"><span jhiTranslate="cautiondouaneApp.demandeImportation.dateReceptionFacture">Date Reception Facture</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="dateDepotFacture"><span jhiTranslate="cautiondouaneApp.demandeImportation.dateDepotFacture">Date Depot Facture</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="numeroPR"><span jhiTranslate="cautiondouaneApp.demandeImportation.numeroPR">Numero PR</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="dateReceptionPR"><span jhiTranslate="cautiondouaneApp.demandeImportation.dateReceptionPR">Date Reception PR</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="numeroDI"><span jhiTranslate="cautiondouaneApp.demandeImportation.numeroDI">Numero DI</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="montantFOB"><span jhiTranslate="cautiondouaneApp.demandeImportation.montantFOB">Montant FOB</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="montantFRET"><span jhiTranslate="cautiondouaneApp.demandeImportation.montantFRET">Montant FRET</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="observation"><span jhiTranslate="cautiondouaneApp.demandeImportation.observation">Observation</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let demandeImportation of demandeImportations ;trackBy: trackId">
+                <td><a [routerLink]="['/demande-importation', demandeImportation.id, 'view' ]">{{demandeImportation.id}}</a></td>
+                <td>{{demandeImportation.numeroDordre}}</td>
+                <td>{{demandeImportation.numeroFactureProforma}}</td>
+                <td>{{demandeImportation.dateReceptionFacture | date:'mediumDate'}}</td>
+                <td>{{demandeImportation.dateDepotFacture | date:'mediumDate'}}</td>
+                <td>{{demandeImportation.numeroPR}}</td>
+                <td>{{demandeImportation.dateReceptionPR | date:'mediumDate'}}</td>
+                <td>{{demandeImportation.numeroDI}}</td>
+                <td>{{demandeImportation.montantFOB}}</td>
+                <td>{{demandeImportation.montantFRET}}</td>
+                <td>{{demandeImportation.observation}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/demande-importation', demandeImportation.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/demande-importation', demandeImportation.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'demande-importation/'+ demandeImportation.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="demandeImportations && demandeImportations.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

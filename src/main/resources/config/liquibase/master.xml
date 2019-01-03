@@ -5,6 +5,26 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190103140034_added_entity_DemandeImportation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190103140035_added_entity_DIQteTypeVehicule.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190103140036_added_entity_Marque.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190103140037_added_entity_Vehicule.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190103140038_added_entity_TypeVehicule.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190103140039_added_entity_Caution.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190103140040_added_entity_Declaration.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190103140041_added_entity_RVC.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190103140042_added_entity_Banque.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190103140043_added_entity_PieceJointe.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190103140044_added_entity_Appurement.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190103140045_added_entity_Employe.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20190103140035_added_entity_constraints_DIQteTypeVehicule.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190103140037_added_entity_constraints_Vehicule.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190103140039_added_entity_constraints_Caution.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190103140040_added_entity_constraints_Declaration.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190103140041_added_entity_constraints_RVC.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190103140043_added_entity_constraints_PieceJointe.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190103140044_added_entity_constraints_Appurement.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190103140045_added_entity_constraints_Employe.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

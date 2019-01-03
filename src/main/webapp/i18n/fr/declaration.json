@@ -1,0 +1,24 @@
+{
+    "cautiondouaneApp": {
+        "declaration": {
+            "home": {
+                "title": "Declarations",
+                "createLabel": "Créer un nouveau Declaration",
+                "createOrEditLabel": "Créer ou éditer un Declaration"
+            },
+            "created": "Un nouveau Declaration a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Declaration avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Declaration avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Declaration {{ id }} ?"
+            },
+            "detail": {
+                "title": "Declaration"
+            },
+            "numeroDeclaration": "Numero Declaration",
+            "reference": "Reference",
+            "numeroIM7": "Numero IM 7",
+            "demandeImportation": "Demande Importation"
+        }
+    }
+}

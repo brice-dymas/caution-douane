@@ -1,0 +1,30 @@
+{
+    "cautiondouaneApp": {
+        "demandeImportation": {
+            "home": {
+                "title": "DemandeImportations",
+                "createLabel": "Créer un nouveau Demande Importation",
+                "createOrEditLabel": "Créer ou éditer un Demande Importation"
+            },
+            "created": "Un nouveau Demande Importation a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Demande Importation avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Demande Importation avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Demande Importation {{ id }} ?"
+            },
+            "detail": {
+                "title": "Demande Importation"
+            },
+            "numeroDordre": "Numero Dordre",
+            "numeroFactureProforma": "Numero Facture Proforma",
+            "dateReceptionFacture": "Date Reception Facture",
+            "dateDepotFacture": "Date Depot Facture",
+            "numeroPR": "Numero PR",
+            "dateReceptionPR": "Date Reception PR",
+            "numeroDI": "Numero DI",
+            "montantFOB": "Montant FOB",
+            "montantFRET": "Montant FRET",
+            "observation": "Observation"
+        }
+    }
+}

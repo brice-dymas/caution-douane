@@ -1,0 +1,30 @@
+{
+    "name": "TypeVehicule",
+    "fields": [
+        {
+            "fieldName": "numeroType",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nomType",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": 3,
+            "fieldValidateRulesMaxlength": 30
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190103140038",
+    "entityTableName": "type_vehicule",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

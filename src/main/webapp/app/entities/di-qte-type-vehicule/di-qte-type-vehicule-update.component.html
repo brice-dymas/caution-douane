@@ -1,0 +1,64 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-di-qte-type-vehicule-heading" jhiTranslate="cautiondouaneApp.dIQteTypeVehicule.home.createOrEditLabel">Create or edit a DI Qte Type Vehicule</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!dIQteTypeVehicule.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="dIQteTypeVehicule.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cautiondouaneApp.dIQteTypeVehicule.quantite" for="field_quantite">Quantite</label>
+                    <input type="number" class="form-control" name="quantite" id="field_quantite"
+                        [(ngModel)]="dIQteTypeVehicule.quantite" required min="0" jhiMin="0"/>
+                    <div [hidden]="!(editForm.controls.quantite?.dirty && editForm.controls.quantite?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.quantite?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.quantite?.errors?.min" jhiTranslate="entity.validation.min" translateValues="{ min: 0 }">
+                            This field should be at least 0.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.quantite?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cautiondouaneApp.dIQteTypeVehicule.demandeImportation" for="field_demandeImportation">Demande Importation</label>
+                    <select class="form-control" id="field_demandeImportation" name="demandeImportation" [(ngModel)]="dIQteTypeVehicule.demandeImportation" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="demandeImportationOption.id === dIQteTypeVehicule.demandeImportation?.id ? dIQteTypeVehicule.demandeImportation : demandeImportationOption" *ngFor="let demandeImportationOption of demandeimportations; trackBy: trackDemandeImportationById">{{demandeImportationOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cautiondouaneApp.dIQteTypeVehicule.typeVehicule" for="field_typeVehicule">Type Vehicule</label>
+                    <select class="form-control" id="field_typeVehicule" name="typeVehicule" [(ngModel)]="dIQteTypeVehicule.typeVehicule" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="typeVehiculeOption.id === dIQteTypeVehicule.typeVehicule?.id ? dIQteTypeVehicule.typeVehicule : typeVehiculeOption" *ngFor="let typeVehiculeOption of typevehicules; trackBy: trackTypeVehiculeById">{{typeVehiculeOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cautiondouaneApp.dIQteTypeVehicule.marque" for="field_marque">Marque</label>
+                    <select class="form-control" id="field_marque" name="marque" [(ngModel)]="dIQteTypeVehicule.marque" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="marqueOption.id === dIQteTypeVehicule.marque?.id ? dIQteTypeVehicule.marque : marqueOption" *ngFor="let marqueOption of marques; trackBy: trackMarqueById">{{marqueOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

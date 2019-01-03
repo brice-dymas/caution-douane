@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="pieceJointe">
+            <h2><span jhiTranslate="cautiondouaneApp.pieceJointe.detail.title">Piece Jointe</span> {{pieceJointe.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="cautiondouaneApp.pieceJointe.nom">Nom</span></dt>
+                <dd>
+                    <span>{{pieceJointe.nom}}</span>
+                </dd>
+                <dt><span jhiTranslate="cautiondouaneApp.pieceJointe.fichier">Fichier</span></dt>
+                <dd>
+                    <div *ngIf="pieceJointe.fichier">
+                        <a (click)="openFile(pieceJointe.fichierContentType, pieceJointe.fichier)" jhiTranslate="entity.action.open">open</a>
+                        {{pieceJointe.fichierContentType}}, {{byteSize(pieceJointe.fichier)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="cautiondouaneApp.pieceJointe.description">Description</span></dt>
+                <dd>
+                    <span>{{pieceJointe.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="cautiondouaneApp.pieceJointe.demandeImportation">Demande Importation</span></dt>
+                <dd>
+                    <div *ngIf="pieceJointe.demandeImportation">
+                        <a [routerLink]="['/demande-importation', pieceJointe.demandeImportation?.id, 'view']">{{pieceJointe.demandeImportation?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="cautiondouaneApp.pieceJointe.rvc">Rvc</span></dt>
+                <dd>
+                    <div *ngIf="pieceJointe.rvc">
+                        <a [routerLink]="['/rvc', pieceJointe.rvc?.id, 'view']">{{pieceJointe.rvc?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="cautiondouaneApp.pieceJointe.declaration">Declaration</span></dt>
+                <dd>
+                    <div *ngIf="pieceJointe.declaration">
+                        <a [routerLink]="['/declaration', pieceJointe.declaration?.id, 'view']">{{pieceJointe.declaration?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/piece-jointe', pieceJointe.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

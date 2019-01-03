@@ -1,0 +1,145 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-demande-importation-heading" jhiTranslate="cautiondouaneApp.demandeImportation.home.createOrEditLabel">Create or edit a Demande Importation</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!demandeImportation.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="demandeImportation.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cautiondouaneApp.demandeImportation.numeroDordre" for="field_numeroDordre">Numero Dordre</label>
+                    <input type="text" class="form-control" name="numeroDordre" id="field_numeroDordre"
+                        [(ngModel)]="demandeImportation.numeroDordre" required maxlength="30"/>
+                    <div [hidden]="!(editForm.controls.numeroDordre?.dirty && editForm.controls.numeroDordre?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.numeroDordre?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.numeroDordre?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 30 }">
+                        This field cannot be longer than 30 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cautiondouaneApp.demandeImportation.numeroFactureProforma" for="field_numeroFactureProforma">Numero Facture Proforma</label>
+                    <input type="text" class="form-control" name="numeroFactureProforma" id="field_numeroFactureProforma"
+                        [(ngModel)]="demandeImportation.numeroFactureProforma" required maxlength="30"/>
+                    <div [hidden]="!(editForm.controls.numeroFactureProforma?.dirty && editForm.controls.numeroFactureProforma?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.numeroFactureProforma?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.numeroFactureProforma?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 30 }">
+                        This field cannot be longer than 30 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cautiondouaneApp.demandeImportation.dateReceptionFacture" for="field_dateReceptionFacture">Date Reception Facture</label>
+                    <div class="input-group">
+                        <input id="field_dateReceptionFacture" type="text" class="form-control" name="dateReceptionFacture" ngbDatepicker  #dateReceptionFactureDp="ngbDatepicker" [(ngModel)]="demandeImportation.dateReceptionFacture"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateReceptionFactureDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cautiondouaneApp.demandeImportation.dateDepotFacture" for="field_dateDepotFacture">Date Depot Facture</label>
+                    <div class="input-group">
+                        <input id="field_dateDepotFacture" type="text" class="form-control" name="dateDepotFacture" ngbDatepicker  #dateDepotFactureDp="ngbDatepicker" [(ngModel)]="demandeImportation.dateDepotFacture"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateDepotFactureDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cautiondouaneApp.demandeImportation.numeroPR" for="field_numeroPR">Numero PR</label>
+                    <input type="text" class="form-control" name="numeroPR" id="field_numeroPR"
+                        [(ngModel)]="demandeImportation.numeroPR" required maxlength="15"/>
+                    <div [hidden]="!(editForm.controls.numeroPR?.dirty && editForm.controls.numeroPR?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.numeroPR?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.numeroPR?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 15 }">
+                        This field cannot be longer than 15 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cautiondouaneApp.demandeImportation.dateReceptionPR" for="field_dateReceptionPR">Date Reception PR</label>
+                    <div class="input-group">
+                        <input id="field_dateReceptionPR" type="text" class="form-control" name="dateReceptionPR" ngbDatepicker  #dateReceptionPRDp="ngbDatepicker" [(ngModel)]="demandeImportation.dateReceptionPR"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateReceptionPRDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cautiondouaneApp.demandeImportation.numeroDI" for="field_numeroDI">Numero DI</label>
+                    <input type="text" class="form-control" name="numeroDI" id="field_numeroDI"
+                        [(ngModel)]="demandeImportation.numeroDI" maxlength="15"/>
+                    <div [hidden]="!(editForm.controls.numeroDI?.dirty && editForm.controls.numeroDI?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.numeroDI?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 15 }">
+                        This field cannot be longer than 15 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cautiondouaneApp.demandeImportation.montantFOB" for="field_montantFOB">Montant FOB</label>
+                    <input type="number" class="form-control" name="montantFOB" id="field_montantFOB"
+                        [(ngModel)]="demandeImportation.montantFOB" min="0" jhiMin="0"/>
+                    <div [hidden]="!(editForm.controls.montantFOB?.dirty && editForm.controls.montantFOB?.invalid)">
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.montantFOB?.errors?.min" jhiTranslate="entity.validation.min" translateValues="{ min: 0 }">
+                            This field should be at least 0.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.montantFOB?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cautiondouaneApp.demandeImportation.montantFRET" for="field_montantFRET">Montant FRET</label>
+                    <input type="number" class="form-control" name="montantFRET" id="field_montantFRET"
+                        [(ngModel)]="demandeImportation.montantFRET" min="0" jhiMin="0"/>
+                    <div [hidden]="!(editForm.controls.montantFRET?.dirty && editForm.controls.montantFRET?.invalid)">
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.montantFRET?.errors?.min" jhiTranslate="entity.validation.min" translateValues="{ min: 0 }">
+                            This field should be at least 0.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.montantFRET?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cautiondouaneApp.demandeImportation.observation" for="field_observation">Observation</label>
+                    <input type="text" class="form-control" name="observation" id="field_observation"
+                        [(ngModel)]="demandeImportation.observation" />
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
