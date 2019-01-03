@@ -1,0 +1,11 @@
+version: '2'
+services:
+    cautiondouane-postgresql:
+        image: postgres:10.4
+        # volumes:
+        #     - ~/volumes/jhipster/cautiondouane/postgresql/:/var/lib/postgresql/data/
+        environment:
+            - POSTGRES_USER=cautiondouane
+            - POSTGRES_PASSWORD=
+        ports:
+            - 5432:5432
