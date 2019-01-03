@@ -1,0 +1,97 @@
+entity DemandeImportation {
+    numeroDordre String required maxlength(30)
+    numeroFactureProforma String required maxlength(30)
+    dateReceptionFacture LocalDate
+    dateDepotFacture LocalDate
+    numeroPR String required maxlength(15)
+    dateReceptionPR LocalDate
+    numeroDI String maxlength(15)
+    montantFOB Long min(0)
+    montantFRET Long min(0)
+    observation String
+
+}
+entity DIQteTypeVehicule {
+    quantite Long required min(0)
+}
+entity Marque {
+    libelle String  required maxlength(100)
+}
+entity Vehicule {
+    numeroChassis String required maxlength(30)
+}
+entity TypeVehicule {
+	numeroType String
+	nomType String required minlength(3) maxlength(30)
+}
+entity Caution {
+	numeroCaution String maxlength(30)
+	numeroDossier String maxlength(30)
+	reference String maxlength(15)	
+    montant Long required min(0)
+}
+entity Declaration {
+    numeroDeclaration String required maxlength(10)
+    reference String required maxlength(30)
+    numeroIM7 String required maxlength(30)
+}
+entity RVC {
+	numeroRVC String  maxlength(30)	
+    montantRVC Long required min(0)
+    numeroNavire String maxlength(10)
+    nomNavire String required maxlength(30)
+    paysProvenance String required maxlength(30)
+    heureDepart ZonedDateTime
+    heureArrivee ZonedDateTime
+
+}
+entity Banque {
+	numeroBanque String maxlength(30)
+	nomBanque String required minlength(3)	maxlength(30)	
+    numeroCompte String required minlength(3) maxlength(50)
+}
+ entity PieceJointe {
+	nom String required minlength(3) maxlength(255)
+    fichier Blob
+    description String maxlength(255)
+}
+ entity Appurement {
+	numeroAppurement String maxlength(30)
+	montantAppure Long min(0)	
+    nombreVehicule Long min(0)
+}
+entity Employe {
+	telephone String
+}
+
+relationship ManyToOne {
+	DIQteTypeVehicule{demandeImportation} to DemandeImportation
+    DIQteTypeVehicule{typeVehicule} to TypeVehicule
+    DIQteTypeVehicule{marque} to Marque
+    Vehicule{marque} to Marque
+	Vehicule{caution} to Caution
+	Vehicule{rvc} to RVC
+	Vehicule{appurement} to Appurement
+	Vehicule{typeVehicule} to TypeVehicule
+    Declaration{demandeImportation} to DemandeImportation
+    Caution{banque} to Banque
+    RVC{demandeImportation} to DemandeImportation
+    PieceJointe{demandeImportation} to DemandeImportation
+    PieceJointe{rvc} to RVC
+    PieceJointe{declaration} to Declaration
+    Appurement{caution} to Caution
+}
+relationship OneToOne {
+	Employe{user} to User
+}
+// Set pagination options
+paginate all with pagination
+
+// Use Data Transfert Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
